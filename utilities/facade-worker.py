@@ -32,6 +32,7 @@ import imp
 import time
 import datetime
 import html.parser
+from html import unescape
 import subprocess
 import os
 import getopt
@@ -840,7 +841,7 @@ def git_repo_initialize():
 		print(row["git"])
 		update_repo_log(row['id'],'Cloning')
 
-		git = html.unescape(row["git"])
+		git = unescape(row["git"])
 
 		# Strip protocol from remote URL, set a unique path on the filesystem
 		if git.find('://',0) > 0:
