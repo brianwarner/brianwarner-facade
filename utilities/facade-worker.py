@@ -28,7 +28,7 @@
 
 import sys
 import platform
-import imp
+import importlib
 import time
 import datetime
 import html.parser
@@ -44,8 +44,6 @@ else:
 	import MySQLdb
 
 global log_level
-
-html = html.parser.HTMLParser()
 
 # Important: Do not modify the database number unless you've also added an
 # update clause to update_db!
@@ -218,7 +216,7 @@ def migrate_database_config():
 
 	try:
 		# If the old database config was found, write a new config
-		imp.find_module('db')
+		importlib.utils.find_spec('db')
 
 		db_config = configparser.ConfigParser()
 
